@@ -1,44 +1,53 @@
 <template>
-    <div>
-        <table>
-            <tr>
-                
-                <th>title</th>
-                <th>director</th>
-                <th>imageUrl</th>
-                <th>duration</th>
-                <th>releaseDate</th>
-                <th>genre</th>
-            </tr>
-            <tr v-for="movie in movies" :key="movie.id">
-                <td>{{movie.title}}</td>
-                <td>{{movie.director}}</td>
-                <td>{{movie.imageUrl}}</td>
-                <td>{{movie.duration}}</td>
-                <td>{{movie.releaseDate}}</td>
-                <td>{{movie.genre}}</td>
-            
-            </tr>
-        </table>
-       
+
+    <div class="row">
+        <movie-card  v-for="movie in movies" :key="movie.id" :movie="movie"/>
+        <!-- {{movies}} -->
     </div>
+ 
 </template>
 
 <script>
-import {moviesService} from '../services/MoviesService'
+import { store } from '../vuex/store';
+
+import { mapGetters } from 'vuex'
+import MovieCard from './MovieCard'
+
+// import {moviesService} from '../services/MoviesService'
 export default {
-    data(){
-        return {
-            movies: []
-        }
+    components:{
+        MovieCard,
     },
-   async created(){
-       
-          this.movies = await moviesService.getMovies();
-        console.log(this.movies)
+
+    computed:{
+        
+        ...mapGetters(['movies'])
+    },
+
+    created(){
+        // console.log('created', {
+        //     moviesComputed: this.movies,
+        //     moviesStore: store.getters.movies
+        // })
+        // this.movies = await moviesService.getAll();
+
+    },
+    mounted() {
+        // console.log('app movies mounted', {movies: this.movies})
+    },
+    beforeRouteEnter(to, from, next){
+        //4ti vuex korak
+        // console.log('dispatch action')
+        store.dispatch('fetchMovies').then(()=> {
+            next();
+        })
+        
+    }
+
+        
           
      
-    }
+
 }
 </script>
 

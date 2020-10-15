@@ -3,14 +3,18 @@
     
     
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <router-link class="navbar-brand" to="/movies">Movies</router-link> |
-        <!-- <router-link to="/about">About</router-link> -->
+        <router-link class="navbar-brand" to="/movies">Movies</router-link> 
+        <router-link class="navbar-brand"  to="/add-movie">Add Movie</router-link>
       </nav>
     
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  name:'App'
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

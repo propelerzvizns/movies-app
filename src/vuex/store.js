@@ -10,7 +10,9 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         
-        movies: [ {id: 23, title: 'safsaf'}]
+        movies: [],
+        searchTerm: '',
+        filteredMovies: []
     },
     getters,    //"treci korak"
     mutations,   //2gi korak

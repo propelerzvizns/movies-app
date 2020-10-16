@@ -6,13 +6,18 @@
         <router-link class="navbar-brand" to="/movies">Movies</router-link> 
         <router-link class="navbar-brand"  to="/add-movie">Add Movie</router-link>
       </nav>
+      <movie-search/>
     
     <router-view/>
   </div>
 </template>
 <script>
+import MovieSearch from './components/MovieSearch'
 export default {
-  name:'App'
+  name:'App',
+  components: {
+    MovieSearch
+  }
 }
 </script>
 <style>

@@ -1,8 +1,11 @@
 <template>
-
-    <div class="row">
-        <movie-card  v-for="movie in movies" :key="movie.id" :movie="movie"/>
-        <!-- {{movies}} -->
+<div>
+    <div class="row" v-if="filteredMovies.length">
+        <movie-card  v-for="movie in filteredMovies" :key="movie.id" :movie="movie"/>
+    </div>
+    <div v-else>
+        <p style="color: white; background-color:red">there is no movies for current input</p>
+    </div>
     </div>
  
 </template>
@@ -21,7 +24,7 @@ export default {
 
     computed:{
         
-        ...mapGetters(['movies'])
+        ...mapGetters(['movies','filteredMovies']),
     },
 
     created(){

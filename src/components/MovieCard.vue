@@ -21,7 +21,8 @@
         <b-card-body class="row">
             
         <router-link class="navbar-brand btn btn-success"  :to="{ name: 'edit-movie', params: { id: movie.id }}">Edit Movie</router-link>
-        <router-link class="navbar-brand btn btn-danger"  to="/delete-movie">Delete Movie</router-link>
+        <!-- <router-link class="navbar-brand btn btn-danger"  to="/delete-movie">Delete Movie</router-link> -->
+       <button>Select</button>
 
      
 
@@ -33,7 +34,8 @@
 
 <script>
 export default {
-    name: 'MovieCard', 
+    name: 'MovieCard',
+
 
     props: {
         movie: Object

@@ -3,7 +3,7 @@ import axios from "axios";
 export default class MoviesService {
     constructor(){
         this.apiClient = axios.create({
-            baseURL: 'http://localhost:3000/api/',
+            baseURL: 'http://127.0.0.1:8000/api/',
             thimeout: 1000
         })
     }

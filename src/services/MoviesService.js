@@ -6,26 +6,47 @@ export default class MoviesService {
             baseURL: 'http://127.0.0.1:8000/api/',
             thimeout: 1000
         })
+        this.apiClient.interceptors.request.use(function(config){
+            const token = localStorage.getItem('token');
+            // console.log('interceptor', { token })
+            if(token){
+                config.headers.Authorization = `Bearer ${token}`;
+            }
+            return config;
+        })
     }
     async getAll(){
+        // console.log('movies.getAll()')
        const {data} =  await this.apiClient.get('movies');
-      return data
+      return data;
     }
     async addMovie(movie){
+        console.log('movies.add()')
+
         const { data } = await this.apiClient.post('/movies', movie)
-        console.log(movie);
+
         return data;
     }
     async getMovie(id){
-        // console.log(id)
+        
+
+
         const {data} = await this.apiClient.get(`/movies/${id}`)
         return data
-        // console.log(data)
+   
     }
 
-    editMovie(movie){
-        this.apiClient.put(`/movies/${movie}`)
-        console.log(movie)
+    async editMovie(movie){
+    
+        const editedMovie = await this.apiClient.put(`/movies/${movie.id}`, movie);
+        return editedMovie;
+       
+        
+    }
+    async deleteMovie(id){
+        
+        const deletedMovie = this.apiClient.delete(`/movies/${id}`)
+        return deletedMovie;
     }
 }
 

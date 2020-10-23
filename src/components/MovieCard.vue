@@ -23,6 +23,7 @@
         <router-link class="navbar-brand btn btn-success"  :to="{ name: 'edit-movie', params: { id: movie.id }}">Edit Movie</router-link>
         <!-- <router-link class="navbar-brand btn btn-danger"  to="/delete-movie">Delete Movie</router-link> -->
        <button>Select</button>
+       <button @click="deleteMovie">delete</button>
 
      
 
@@ -39,6 +40,13 @@ export default {
 
     props: {
         movie: Object
+    },
+    methods: {
+        deleteMovie(){
+            this.$emit('delete-movie', this.movie.id)
+            // console.log(this.movie.id);
+            
+        }
     }
 }
 </script>

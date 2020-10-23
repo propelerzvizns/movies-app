@@ -12,7 +12,9 @@ export const store = new Vuex.Store({
         
         movies: [],
         searchTerm: '',
-        filteredMovies: []
+        filteredMovies: [],
+        pagination: {},
+        movie: ''
     },
     getters,    //"treci korak"
     mutations,   //2gi korak

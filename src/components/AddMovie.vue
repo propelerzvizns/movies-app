@@ -74,7 +74,7 @@ export default {
     onSubmit(){
          if(this.$route.params.id){
            this.editMovie(this.movie)
-          //  this.$router.push('movies')
+           this.$router.push('/movies')
          } else {
 
            this.addMovie(this.movie);
@@ -85,14 +85,14 @@ export default {
 
  async mounted() {
     // console.log('add movie mounted', { id: this.$route.params.id })
-    // if(this.$route.params.id) {
+    if(this.$route.params.id) {
     //   const movie = this.movies.find(movie => movie.id == this.$route.params.id);
     //   console.log('FOUND MOVIE', { movie })
     //   this.movie = {...this.movies.find(movie=>movie.id == this.$route.params.id)}
     // }
         this.movie = await moviesService.getMovie(this.$route.params.id)
     // console.log(movie);
-
+    }
   }
 }
 </script>

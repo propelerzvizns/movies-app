@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row" v-if="filteredMovies.length">
-        <movie-card  v-for="movie in filteredMovies" :key="movie.id" :movie="movie"/>
+        <movie-card  v-for="movie in filteredMovies" :key="movie.id" :movie="movie" @delete-movie="handleDeleteMovie"/>
     </div>
     <div v-else>
         <p style="color: white; background-color:red">there is no movies for current input</p>
@@ -13,7 +13,7 @@
 <script>
 import { store } from '../vuex/store';
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import MovieCard from './MovieCard'
 
 // import {moviesService} from '../services/MoviesService'
@@ -25,6 +25,14 @@ export default {
     computed:{
         
         ...mapGetters(['movies','filteredMovies']),
+    },
+    methods:{
+        ...mapActions(['deleteMovie']),
+        handleDeleteMovie(id){
+            this.deleteMovie(id);
+            
+            
+        }
     },
 
     created(){

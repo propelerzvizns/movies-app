@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/movies',
-    name: 'movies',
+    name: 'movies-all',
     component: AppMovies
   },
   {
